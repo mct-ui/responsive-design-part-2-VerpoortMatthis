@@ -16,13 +16,6 @@
          url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2");
 }
 
-@font-face {
-    font-family: "HK Grotesk Web";
-    font-weight: 600;
-    src: url("../fonts/hkgrotesk-medium-webfont.woff") format("woff"),
-         url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2");
-}
-
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -52,7 +45,6 @@ html {
 @media (min-width: 768px) {
     html {
         font-size: 20px;
-        line-height: 1.6;
     }
 }
 
@@ -169,16 +161,13 @@ hr {
     margin: 0 0 24px;
 }
 
-a {
+a,
+a:visited {
     color: #5051DB;
     transition: all .1s ease-in-out;
 }
 
-a:visited,
-a:active {
-    color: #5051DB;
-}
-
+a:active,
 a:hover,
 a:focus {
     color: #3E3EA8;
@@ -198,6 +187,15 @@ a:focus {
     position: relative;
     padding: 24px 24px 0;
     display: flow-root;
+}
+
+.o-row--neutral-x-light{
+    background-color: #F7F7F7;
+}
+
+.o-row—gradient{
+    background: linear-gradient(45deg, #5051DB, #3887F7 100%);
+    color:#fff
 }
 
 /* size modifiers */
@@ -354,21 +352,14 @@ a:focus {
 }
 
 /*
-    Objects: List
-    ---
-    Small reusable object to remove default list styling from lists
-*/
-
-.o-list-reset {
-    list-style: none;
-    padding: 0;
-}
-
-/*
     Objects: section
     ---
     Creates vertical whitespace between adjacent sections inside a row
 */
+
+* + h2 {
+    margin-top: 48px;
+}
 
 .o-section {
     display: flow-root;
@@ -391,6 +382,17 @@ a:focus {
     }
 }
 
+/*
+    Objects: List
+    ---
+    Small reusable object to remove default list styling from lists
+*/
+
+.o-list-reset {
+    list-style: none;
+    padding: 0;
+}
+
 
 /*------------------------------------*\
   #COMPONENTS
@@ -409,6 +411,7 @@ a:focus {
 @media (min-width: 992px) {
     .c-header {
         display: flex;
+        gap: 24px;
         justify-content: space-between;
     }
 
@@ -416,6 +419,7 @@ a:focus {
         display: block;
     }
 }
+
 
 /*
     Component: Logo
@@ -427,7 +431,7 @@ a:focus {
     height: 32px;
 }
 
-.c-logo__symbol {
+.c-logo__svg {
     height: 100%;
 }
 
@@ -437,6 +441,54 @@ a:focus {
     }
 }
 
+.c-footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.c-footer__logo {
+    width: 100%;
+}
+
+.c-footer__nav {
+    width: 50%;
+}
+
+@media (min-width: 768px) {
+    .c-footer {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .c-footer__logo {
+        display: flex;
+        justify-content: center;
+        padding: 0 12px;
+    }
+
+    .c-footer__nav {
+        width: auto;
+        padding: 0 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    .c-footer {
+        justify-content: space-between;
+    }
+
+    .c-footer__nav {
+        padding: 0;
+    }
+
+    .c-footer__logo+.c-footer__nav {
+        order: -1;
+    }
+
+    .c-footer__logo {
+        width: auto;
+    }
+}
 /*
     Component: Nav
     ---
@@ -453,9 +505,9 @@ a:focus {
 }
 
 .c-nav__link {
+    display: block;
     text-decoration: none;
     padding: 8px 0;
-    display: block;
 }
 
 .c-nav__link,
@@ -470,10 +522,10 @@ a:focus {
     color: #6C6C75;
 }
 
-.is-selected .c-nav__link,
+.c-nav__link.is-selected,
 .c-nav__link:hover,
 .c-nav__link:focus {
-    color: #5051DB;
+    color: #5051db;
 }
 
 @media (min-width: 768px) {
@@ -482,6 +534,143 @@ a:focus {
         gap: 32px;
     }
 }
+
+.c-lead{
+    font-weight: 200;
+}
+
+.c-lead--lg
+{
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.c-lead--xl {
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.c-lead--xxl{
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.c-lead--xxxl {
+    font-size: 36px;
+    line-height: 48px;
+}
+
+@media (min-width: 768px) {
+    .c-lead--lg {
+        font-size: 23px;
+        line-height: 32px;
+    }
+
+    .c-lead--xl {
+        font-size: 29px;
+        line-height: 42px;
+    }
+
+    .c-lead--xxl {
+        font-size: 40px;
+        line-height: 48px;
+    }
+    .c-lead--xxxl {
+        font-size: 50px;
+        line-height: 64px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .c-lead--lg {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .c-lead--xl {
+        font-size: 34px;
+        line-height: 54px;
+    }
+
+    .c-lead--xxl {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
+    .c-lead--xxxl {
+        font-size: 66px;
+        line-height: 70px;
+    }
+}
+
+.c-title-icon {
+    display: flex;
+    align-items: center;
+}
+
+.c-title-icon__icon {
+    height: 70px;
+    margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+    .c-title-icon__icon {
+        height: 84px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .c-title-icon__icon {
+        height: 112px;
+    }
+}   
+
+.c-link-cta{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 4px 0;
+    transition: color .175s ease-in
+}
+
+
+.c-link-cta::after{
+    content:"";
+    display:block;
+    position: absolute;
+    bottom:0;
+    left:0;
+    height: 1px;
+    width:100%;
+    background-color: #7373F5;
+    transform: scaleX(.5);
+    transform-origin: left;
+    transition-property: transform,background-color;
+    transition-duration: .175s;
+    transition-timing-function: ease;
+
+}
+
+.c-link-cta:hover::after{
+    transform: scaleX(1);
+    background-color: #3E3EA8;
+}
+
+.c-link-cta--inverse,
+.c-link-cta--inverse:visited,
+.c-link-cta--inverse:active {
+    color: #fff
+}
+
+.c-link-cta--inverse:hover::after,
+.c-link-cta--inverse::after{
+    background-color: #fff;
+}
+
 
 /*------------------------------------*\
   #UTILITIES
@@ -495,26 +684,6 @@ a:focus {
 
 .u-pt-clear {
     padding-top: 0 !important;
-}
-
-.u-pt-xs {
-    padding-top: 8px !important;
-}
-
-.u-pt-sm {
-    padding-top: 16px !important;
-}
-
-.u-mb-clear {
-    margin-bottom: 0 !important;
-}
-
-.u-mb-xs {
-    margin-bottom: 8px !important;
-}
-
-.u-mb-sm {
-    margin-bottom: 16px !important;
 }
 
 /*
@@ -748,6 +917,18 @@ a:focus {
     .u-5-of-6-bp4 {
         flex-basis: calc(100% / 6 * 5) !important;
     }
+}
+
+.u-color-primary-light {
+    color: #7373F5;
+}
+
+.u-color-primary-base {
+    color: #5051DB;
+}
+
+.u-color-primary-dark {
+    color: #3E3EA8;
 }
 
 /*------------------------------------*\
